@@ -1,0 +1,64 @@
+Geeky had developed a deep interest in antique items and
+
+was determined to acquire them all. However, as he
+
+started visiting different shops, he realized that the same
+
+antique item was being sold at different prices by different
+
+vendors.Geeky knew that he had to be smart with his
+
+purchases if he wanted to save money and acquire all the
+
+different types of antique items in the market.
+
+He created two arrays of size n called items[] and
+
+prices []. Each item at index i in the items [] array had a
+
+corresponding price at index i in the prices [] array.Can
+
+you help Geeky find his minimum budget to get all the
+
+different types of antique items from the market?
+
+
+
+
+
+
+
+solutions:
+
+
+
+
+
+class Solution {
+    public int antiqueItems(int n, int items[], int prices[]){
+    if (items.length != prices.length) {
+            return -1;
+        }
+
+        Map<Integer, Integer> mp = new HashMap<>();
+        for (int i = 0; i < items.length; i++) {
+            int item = items[i];
+            int price = prices[i];
+            if(mp.containsKey(item) && mp.get(item)<price){
+                continue;
+                
+            }else{
+                mp.put(item, price);
+            }
+            
+        }
+
+        int budget = 0;
+        for (int price : mp.values()) {
+            budget += price;
+        }
+
+        return budget;
+        
+    }
+}
